@@ -1,0 +1,189 @@
+<html> 
+    <head>
+    
+        <title> 
+        Reaction Game
+    	</title>
+
+    	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    
+        <style type="text/css"> 
+
+        	@import url(http://weloveiconfonts.com/api/?family=iconicstroke);
+        	[class*="iconicstroke-"]:before {
+ 			 font-family: 'IconicStroke', sans-serif;
+				}
+
+
+        	#shape {
+        		width:100px;
+        		height: 100px;
+        		background-color:#FF0000;
+        		display: none;
+        		position: relative;
+        		top: 100px;
+        		left:200px;
+        		border-radius: 0;
+        	}
+
+        	.text1 {
+        		font-family: "Roboto";
+        		font-size: 20px;
+        		color: white;
+        		text-align: center
+        	}
+
+        	h1{
+        		text-align: center;
+        		font-family: "Roboto";
+        		color: white;
+
+        	}
+
+        	.headerback {
+
+        	}
+
+        	body {
+        		background-color: #271033;
+        	}
+        </style>
+
+	</head>
+
+<body>
+<div class="headerback">
+<h1> <span class="iconicstroke-minus"></span> Test Your Reaction Time <span class="iconicstroke-minus"></span> </h1>
+
+<p class="text1"> Directions: Click on the shapes as quickly as you can. </p>
+
+<p class="text1"> <span class="iconicstroke-clock"></span> Your time: <span id="timeTaken"></span></p>
+
+</div>
+
+<div id ="shape"> </div>
+
+
+
+
+
+	<script type="text/javascript">
+
+	var start = new Date().getTime();
+
+	function shapesAppear (){
+		
+		var x = Math.floor(Math.random()*250);
+        var y = Math.floor(Math.random()*250);
+        var z = Math.floor((Math.random()+1)*10);
+        var color = '#';
+        var letters = ['000000','5f2c68','c06a93','e79a98','f6BB9e','f4977e','f47ea0','9c426d','d95d5a','722e94','1f5807','cd8921'];
+        color += letters[Math.floor(Math.random() * letters.length)];
+        
+        document.getElementById("shape").style.display = "block";
+        
+        if (x<=75){
+        	document.getElementById('shape').style.borderRadius= "50%";
+        } else {
+        	document.getElementById('shape').style.borderRadius= "10%";
+        };
+        
+        document.getElementById('shape').style.left = x + 'px';
+        document.getElementById('shape').style.top = y + 'px';
+        document.getElementById('shape').style.width = (30*z) + 'px';
+        document.getElementById('shape').style.height = (30*z) + 'px';
+		document.getElementById('shape').style.background = color;
+        
+		start = new Date().getTime();
+		
+		}
+
+	function appearAfterDelay () {
+		setTimeout(shapesAppear, Math.random() *2000);
+	}
+
+
+	appearAfterDelay();
+	
+
+	//**************THIS IS ONE FUNCTION****************
+		document.getElementById("shape").onclick = function(){
+			document.getElementById("shape").style.display="none";
+		
+     		var end = new Date().getTime();
+     	
+     		var timeTaken = (end - start)/1000;
+     	
+     		document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+
+     		appearAfterDelay();
+     	
+			};
+
+
+
+
+/* 
+function setDivPos() {
+         var x = Math.floor(Math.random()*250);
+         var y = Math.floor(Math.random()*250);
+         document.getElementById('shape').style.left = x + 'px';
+         document.getElementById('shape').style.top = y + 'px';
+   }
+
+var color = '#'; // hexadecimal starting symbol
+                var letters = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0']; //Set your colors here
+                color += letters[Math.floor(Math.random() * letters.length)];
+                document.getElementById('posts').style.background = color;
+
+
+
+var start1 = new Date().getTime();
+
+<div id ="shape2"></div>
+document.getElementById("shape2").style.display="none";
+
+setTimeout(function() {
+    document.getElementById("timeTaken").innerHTML = "";
+    document.getElementById("shape2").style.display="block";
+}, 500);
+
+
+//while(x.style.display === 'none'){
+     	//	x.style.display = 'block';
+     	//}
+
+//document.getElementById("timeTaken").innerHTML = 0 + "s";
+document.getElementById("shape2").onclick = function(){
+		document.getElementById("shape2").style.display="none";
+
+     	var end = new Date().getTime();
+		var timeTaken1 = (end - start1)/1000;
+     	document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+     };
+if to possibly toggle the displaying of the div "shape"
+   if (x.style.display === 'none') {
+   				 x.style.display = 'block';
+  		  } else {
+       			 x.style.display = 'none';
+    			};
+
+
+
+    			var letters = ['000000','FF0000','F1F200','02FF00','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0','F1FF00']
+     	*/
+
+	
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>
+
